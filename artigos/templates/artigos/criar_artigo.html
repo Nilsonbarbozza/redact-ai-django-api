@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .content {
+            padding: 20px;
+            margin-bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Criar artigos </h1>
+    <div class="content" id="main-content">
+        <h2>Criação de Artigos</h2>
+        <form id="article-form" hx-post="/api/criar-artigo/" hx-target="#response">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required><br><br>
+            
+            <label for="keywords">Palavras-chave:</label>
+            <input type="text" id="keywords" name="keywords" required><br><br>
+            
+            <button type="submit">Gerar Artigo</button>
+        </form>
+        <div id="response"></div>
+    </div>
+    
+    <div class="navbar">
+        <a href="#" hx-get="/criar-artigo/" hx-target="#main-content">Criar Artigo</a>
+        <a href="#" hx-get="/configuracoes/" hx-target="#main-content">Configurações</a>
+    </div>
+</body>
+</html>
